@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="layout :: html">
+<head>
+    <title>Role Form</title>
+</head>
+<body>
+    <div th:fragment="content">
+        <h2>Role Form</h2>
+        <form th:action="@{/roles}" th:object="${role}" method="post">
+            <label for="title">Title:</label>
+            <input type="text" id="title" th:field="*{title}" required />
+
+            <label for="salaryBand">Salary Band:</label>
+            <input type="text" id="salaryBand" th:field="*{salaryBand}" />
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
