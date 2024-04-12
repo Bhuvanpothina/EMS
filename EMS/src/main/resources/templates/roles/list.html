@@ -1,31 +1,36 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" th:replace="layout :: html">
 <head>
-    <title>Roles</title>
+<title>Roles</title>
 </head>
 <body>
-    <div th:fragment="content">
-        <h2>Roles</h2>
-        <a th:href="@{/roles/new}">Add New Role</a>
-        <table>
-            <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Salary Band</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="role : ${roles}">
-                    <td th:text="${role.title}">Role Title</td>
-                    <td th:text="${role.salaryBand}">Salary Band</td>
-                    <td>
-                        <a th:href="@{/roles/edit/{id}(id=${role.roleId})}">Edit</a>
-                        <a th:href="@{/roles/delete/{id}(id=${role.roleId})}" th:onclick="'return confirm(\'Are you sure?\')'">Delete</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+	<div th:fragment="content">
+		<h2>Roles</h2>
+		<a th:href="@{/roles/new}">Add New Role</a>
+		<table>
+			<thead>
+				<tr>
+					<th>Title</th>
+					<th>Salary Band</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="role : ${roles}">
+					<td th:text="${role.title}">Role Title</td>
+					<td th:text="${role.salaryBand}">Salary Band</td>
+					<td><a th:href="@{/roles/edit/{id}(id=${role.roleId})}">Edit</a>
+						<a th:href="@{/roles/delete/{id}(id=${role.roleId})}"
+						th:onclick="'return confirm(\'Are you sure?\')'">Delete</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div th:if="${not #strings.isEmpty(errorMessage)}">
+		<div th:text="${errorMessage}"></div>
+	</div>
+	<div th:if="${not #strings.isEmpty(successMessage)}">
+		<div th:text="${successMessage}"></div>
+	</div>
 </body>
 </html>

@@ -1,18 +1,19 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" th:replace="layout :: html">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Department Form</title>
 </head>
 <body>
-    <div th:fragment="content">
+    <div>
         <h2>Department Form</h2>
-        <form th:action="@{/departments}" th:object="${department}" method="post">
+        <form th:action="@{/departments/saveOrUpdate}" th:object="${department}" method="post">
+            <input type="hidden" th:field="*{departmentId}" />
             <label for="name">Name:</label>
             <input type="text" id="name" th:field="*{name}" required />
-
+            
             <label for="location">Location:</label>
             <input type="text" id="location" th:field="*{location}" />
-
+            
             <button type="submit">Submit</button>
         </form>
     </div>

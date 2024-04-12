@@ -13,56 +13,45 @@ import com.lb.ems.service.DepartmentService;
 @RequestMapping("/departments")
 public class DepartmentController {
 
-	private final DepartmentService departmentService;
+    private final DepartmentService departmentService;
 
-	@Autowired
-	public DepartmentController(DepartmentService departmentService) {
-		this.departmentService = departmentService;
-	}
+    @Autowired
+    public DepartmentController(DepartmentService departmentService) {
+        this.departmentService = departmentService;
+    }
 
-	@GetMapping
-	public String listDepartments(Model model) {
-		model.addAttribute("departments", departmentService.findAllDepartments());
-		return "departments/list"; // HTML template for listing departments
-	}
+    @GetMapping
+    public String listDepartments(Model model) {
+        model.addAttribute("departments", departmentService.findAllDepartments());
+        return "departments/list";
+    }
 
-	@GetMapping("/new")
-	public String showDepartmentForm(Model model) {
-		model.addAttribute("department", new Department());
-		return "departments/form"; // HTML form for creating a new department
-	}
+    @GetMapping("/new")
+    public String showDepartmentForm(Model model) {
+        model.addAttribute("department", new Department());
+        return "departments/form";
+    }
 
-	@PostMapping
-	public String saveDepartment(@ModelAttribute("department") Department department, BindingResult result) {
-		if (result.hasErrors()) {
-			return "departments/form";
-		}
-		departmentService.saveDepartment(department);
-		return "redirect:/departments";
-	}
+    @GetMapping("/edit/{id}")
+    public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
+        Department department = departmentService.findDepartmentById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid department Id:" + id));
+        model.addAttribute("department", department);
+        return "departments/form";
+    }
 
-	@GetMapping("/edit/{id}")
-	public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
-		Department department = departmentService.findDepartmentById(id)
-				.orElseThrow(() -> new IllegalArgumentException("Invalid department Id:" + id));
-		model.addAttribute("department", department);
-		return "departments/form"; // HTML form for editing an existing department
-	}
+    @PostMapping("/saveOrUpdate")
+    public String saveOrUpdateDepartment(@ModelAttribute("department") Department department, BindingResult result) {
+        if (result.hasErrors()) {
+            return "departments/form";
+        }
+        departmentService.saveDepartment(department);
+        return "redirect:/departments";
+    }
 
-	@PostMapping("/update/{id}")
-	public String updateDepartment(@PathVariable("id") Integer id, @ModelAttribute("department") Department department,
-			BindingResult result) {
-		if (result.hasErrors()) {
-			department.setDepartmentId(id);
-			return "departments/form";
-		}
-		departmentService.saveDepartment(department); // This will update the department if it exists
-		return "redirect:/departments";
-	}
-
-	@GetMapping("/delete/{id}")
-	public String deleteDepartment(@PathVariable("id") Integer id) {
-		departmentService.deleteDepartment(id);
-		return "redirect:/departments"; // Redirects back to the department list
-	}
+    @GetMapping("/delete/{id}")
+    public String deleteDepartment(@PathVariable("id") Integer id) {
+        departmentService.deleteDepartment(id);
+        return "redirect:/departments";
+    }
 }
