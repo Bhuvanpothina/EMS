@@ -3,6 +3,8 @@ package com.lb.ems.model;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -27,10 +29,12 @@ public class Salary {
 	@Column(nullable = false)
 	private BigDecimal amount;
 
-	@Column(name = "effective_date", nullable = false)
+	@Column(name = "effectiveDate", nullable = false)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date effectiveDate;
 
-	@Column(name = "end_date")
+	@Column(name = "endDate")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date endDate;
 
 	public Integer getSalaryId() {

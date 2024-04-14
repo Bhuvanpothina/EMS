@@ -1,25 +1,20 @@
+<!-- layout.html -->
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Employee Management System</title>
+    <title th:text="${title} ?: 'Default Application Title'">Employee Management System</title>
     <link rel="stylesheet" th:href="@{/css/style.css}" />
 </head>
 <body>
-    <nav>
-        <!-- Navigation Bar -->
-        <a th:href="@{/}">Home</a>
-        <a th:href="@{/employees}">Employees</a>
-        <a th:href="@{/departments}">Departments</a>
-        <a th:href="@{/roles}">Roles</a>
-        <a th:href="@{/salaries}">Salaries</a>
-    </nav>
+    <header th:replace="header :: site-header"></header>
+    <nav th:replace="header :: site-navigation"></nav>
 
     <div class="container">
-        <th:block th:include="this :: content"></th:block>
+        <div th:replace="${fragment} :: content"></div>
     </div>
-    
+
     <footer>
-        <!-- Footer Content -->
+        <p>Copyright &copy; 2024</p>
     </footer>
 </body>
 </html>

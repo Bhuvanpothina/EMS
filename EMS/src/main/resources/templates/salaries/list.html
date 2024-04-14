@@ -2,34 +2,41 @@
 <html xmlns:th="http://www.thymeleaf.org" th:replace="layout :: html">
 <head>
     <title>Salaries</title>
+        <link rel="stylesheet" th:href="@{/css/style.css}" />
+    
 </head>
 <body>
     <div th:fragment="content">
         <h2>Salaries</h2>
+        <div th:if="${not #lists.isEmpty(salaries)}">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Employee</th>
+                        <th>Amount</th>
+                        <th>Effective Date</th>
+                        <th>End Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="salary : ${salaries}">
+                        <td th:text="${salary.employee.name}">Employee Name</td>
+                        <td th:text="${salary.amount}">Amount</td>
+                        <td th:text="${#dates.format(salary.effectiveDate, 'yyyy-MM-dd')}">Effective Date</td>
+                        <td th:text="${salary.endDate != null ? #dates.format(salary.endDate, 'yyyy-MM-dd') : 'N/A'}">End Date</td>
+                        <td>
+                            <a th:href="@{/salaries/edit/{id}(id=${salary.salaryId})}">Edit</a>
+                            <a th:href="@{/salaries/delete/{id}(id=${salary.salaryId})}" th:onclick="'return confirm(\'Are you sure?\')'">Delete</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div th:if="${#lists.isEmpty(salaries)}">
+            <p>No salary records found.</p>
+        </div>
         <a th:href="@{/salaries/new}">Add New Salary Record</a>
-        <table>
-            <thead>
-                <tr>
-                    <th>Employee</th>
-                    <th>Amount</th>
-                    <th>Effective Date</th>
-                    <th>End Date</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="salary : ${salaries}">
-                    <td th:text="${salary.employee.name}">Employee Name</td>
-                    <td th:text="${salary.amount}">Amount</td>
-                    <td th:text="${#dates.format(salary.effectiveDate, 'yyyy-MM-dd')}">Effective Date</td>
-                    <td th:text="${salary.endDate != null ? #dates.format(salary.endDate, 'yyyy-MM-dd') : 'N/A'}">End Date</td>
-                    <td>
-                        <a th:href="@{/salaries/edit/{id}(id=${salary.salaryId})}">Edit</a>
-                        <a th:href="@{/salaries/delete/{id}(id=${salary.salaryId})}" th:onclick="'return confirm(\'Are you sure?\')'">Delete</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
     </div>
 </body>
 </html>

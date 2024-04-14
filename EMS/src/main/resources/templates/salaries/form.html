@@ -1,13 +1,18 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" th:replace="layout :: html">
 <head>
     <title>Salary Form</title>
+        <link rel="stylesheet" th:href="@{/css/style.css}" />
+    
 </head>
 <body>
-    <div>
+    <div th:fragment="content">
         <h2>Salary Form</h2>
         <form th:action="@{/salaries/saveOrUpdate}" th:object="${salary}" method="post">
             <input type="hidden" th:field="*{salaryId}"/>
+            <div th:if="${#fields.hasErrors('global')}">
+                <p th:each="error : ${#fields.globalErrors()}" th:text="${error}">Error message here</p>
+            </div>
             <label for="employee">Employee:</label>
             <select id="employee" th:field="*{employee.employeeId}" required>
                 <option value="">Select Employee</option>
