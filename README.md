@@ -6,8 +6,7 @@ sreelikhitha-123 - Sree Likhitha Pinnam,
 Bhuvanpothina - Pothina Bhuvan Chandar
 #  commits done by each member 
 # Sree Likhitha Pinnam
-Update README.md,
-Update README.md,
+Added search functionality, 
 Update README.md,
 added error and exception,
 Modified Ui with corrections,
@@ -16,6 +15,7 @@ Added application.properties file and department controller file
 Added service files which will help in the sql operations such as CRUD
 Adding repositories files or dao files which will makes to convert java object to sql objects
 # Pothina Bhuvan Chandar
+formatted code with prettier version, 
 updated code with minor tweaks
 updated major changes as per the
 Added roles views
