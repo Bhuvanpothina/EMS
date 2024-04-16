@@ -27,7 +27,7 @@ public class Employee {
 	private Role role;
 
 	@ManyToOne
-	@JoinColumn(name = "department_id")
+	@JoinColumn(name = "department_id", nullable = true)
 	private Department department;
 
 	@Column(name = "hire_date", nullable = false)
@@ -85,5 +85,7 @@ public class Employee {
 		this.department = department;
 		this.hireDate = hireDate;
 	}
-
+	public Integer getDepartmentId() {
+	    return department != null ? department.getDepartmentId() : null;
+	}
 }

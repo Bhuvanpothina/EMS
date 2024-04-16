@@ -3,8 +3,8 @@ package com.lb.ems.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.lb.ems.model.Department;
 import com.lb.ems.service.DepartmentService;
@@ -41,17 +41,20 @@ public class DepartmentController {
     }
 
     @PostMapping("/saveOrUpdate")
-    public String saveOrUpdateDepartment(@ModelAttribute("department") Department department, BindingResult result) {
-        if (result.hasErrors()) {
-            return "departments/form";
-        }
+    public String saveOrUpdateDepartment(@ModelAttribute("department") Department department, RedirectAttributes redirectAttributes) {
         departmentService.saveDepartment(department);
+        redirectAttributes.addFlashAttribute("successMessage", "Department saved successfully.");
         return "redirect:/departments";
     }
 
     @GetMapping("/delete/{id}")
-    public String deleteDepartment(@PathVariable("id") Integer id) {
-        departmentService.deleteDepartment(id);
+    public String deleteDepartment(@PathVariable("id") Integer id, RedirectAttributes redirectAttributes) {
+        try {
+            departmentService.deleteDepartment(id);
+            redirectAttributes.addFlashAttribute("successMessage", "Department deleted successfully.");
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("errorMessage", "Cannot delete department: " + e.getMessage());
+        }
         return "redirect:/departments";
     }
 }
