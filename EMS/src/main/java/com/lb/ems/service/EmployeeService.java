@@ -36,6 +36,12 @@ public class EmployeeService {
 	}
 
 	public List<Employee> searchEmployees(String name, Integer departmentId, Integer roleId) {
+		  if (departmentId == null || departmentId == -1) {
+		        departmentId = null;  // Ensure null is passed if department is not selected
+		    }
+		    if (roleId == null || roleId == -1) {
+		        roleId = null;  // Ensure null is passed if role is not selected
+		    }
 		return employeeRepository.findByNameContainingAndDepartmentDepartmentIdAndRoleRoleId(name, departmentId, roleId);
 	}
 
