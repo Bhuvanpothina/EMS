@@ -24,3 +24,5 @@ Added employee,role and salary controllers
 Added model classes as per the db design
 Created the spring boot project and relative files
 Initial commit
+# video link
+https://youtu.be/lNGYzuUI8Xo
