@@ -1,10 +1,10 @@
-# Employee Management System,    
+# Employee Management System    
 Sree Likhitha Pinnam - Q324C374,     
 Bhuvan Chandar Pothina - Z257F774
 # Github-id's
 sreelikhitha-123 - Sree Likhitha Pinnam,      
 Bhuvanpothina - Pothina Bhuvan Chandar
-#  commits done by each member and commit id's
+#  commits done by each member 
 # Sree Likhitha Pinnam
 Update README.md,
 Update README.md,
