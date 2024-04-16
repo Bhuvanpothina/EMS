@@ -1,17 +1,17 @@
 #  EMS
 Employee Management System
-Sree Likhitha Pinnam - Q324C374
+Sree Likhitha Pinnam - Q324C374,
 Bhuvan Chandar Pothina - Z257F774
 # Github-id's
-sreelikhitha-123 - Sree Likhitha Pinnam
+sreelikhitha-123 - Sree Likhitha Pinnam,
 Bhuvanpothina - Pothina Bhuvan Chandar
 #  commits done by each member and commit id's
 Sree Likhitha Pinnam
-Update README.md- 73c0213951ca3d436cfc92a676f359d298d738c4
-Update README.md- 24dffd2aa66fee78a66b2a50beb785037f4d02de
-Update README.md- 0f724bf5e12d3cecb8b99ce2ecbdc436613d4766
-added error and exception- b10dd06a132a93af86f07e81c2f04fe8b9296b85
-Modified Ui with corrections- 259cab486a2b089da305ad29e0e66a1a293349d3
+Update README.md- 73c0213951ca3d436cfc92a676f359d298d738c4,
+Update README.md- 24dffd2aa66fee78a66b2a50beb785037f4d02de,
+Update README.md- 0f724bf5e12d3cecb8b99ce2ecbdc436613d4766,
+added error and exception- b10dd06a132a93af86f07e81c2f04fe8b9296b85,
+Modified Ui with corrections- 259cab486a2b089da305ad29e0e66a1a293349d3,
 Added views for the employees table- 0c4bb5a58a6b9338399fdf4a4e79d470f93f27b2
 Added application.properties file and department controller file- b85c1cdc1f8239501cce3abf350cadd54c471a2d
 Added service files which will help in the sql operations such as CRUD- d6e8521113df63f33a26e9a922bb2a2f388c99e2
