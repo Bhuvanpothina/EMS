@@ -1,4 +1,3 @@
-#  EMS
 # Employee Management System,    
 Sree Likhitha Pinnam - Q324C374,     
 Bhuvan Chandar Pothina - Z257F774
