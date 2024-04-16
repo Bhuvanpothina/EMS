@@ -13,7 +13,9 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 	@Query("SELECT COUNT(e) > 0 FROM Employee e WHERE e.role.roleId = :roleId")
 	boolean existsByRoleId(@Param("roleId") Integer roleId);
 
-    List<Employee> findByDepartmentDepartmentId(Integer departmentId);
+	List<Employee> findByDepartmentDepartmentId(Integer departmentId);
+
 //    List<Employee> findByDepartmentId(Integer departmentId);
+    List<Employee> findByNameContainingAndDepartmentDepartmentIdAndRoleRoleId(String name, Integer departmentId, Integer roleId);
 
 }

@@ -34,4 +34,9 @@ public class EmployeeService {
 	public void deleteEmployee(Integer id) {
 		employeeRepository.deleteById(id);
 	}
+
+	public List<Employee> searchEmployees(String name, Integer departmentId, Integer roleId) {
+		return employeeRepository.findByNameContainingAndDepartmentDepartmentIdAndRoleRoleId(name, departmentId, roleId);
+	}
+
 }
